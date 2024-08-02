@@ -37,7 +37,6 @@ public class D {
                     break ; 
                 }
             }
-            
             if(flag){
                 System.out.println("YES") ; 
             }
