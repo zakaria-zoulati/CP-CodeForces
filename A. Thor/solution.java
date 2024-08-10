@@ -10,7 +10,6 @@ public class B {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter out = new PrintWriter(System.out); 
-        
         String[] initialInput = br.readLine().split(" ");
         int n = Integer.parseInt(initialInput[0]);
         int q = Integer.parseInt(initialInput[1]);
@@ -50,7 +49,6 @@ public class B {
                     }
                 }
             }
-            
             out.println(unread); 
         }
         
