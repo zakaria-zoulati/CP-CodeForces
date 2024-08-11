@@ -1,0 +1,13 @@
+import java.util.Scanner ; 
+public class B {
+    public static void main(String[] args)  {
+      Scanner sc = new Scanner(System.in) ; 
+      int t = sc.nextInt() ; 
+      for(int p=0 ; p<t ; ++p ){
+            long a = sc.nextLong() ; 
+            long b = sc.nextLong() ; 
+            long rs = Math.min( Math.min(a,b) , (a+b)/4  ) ;
+            System.out.println(rs) ;
+      }
+    }
+}
