@@ -1,6 +1,5 @@
 import java.util.*;
-import java.util.HashSet ;
-public class Solution {
+public class solution {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt() ; 
