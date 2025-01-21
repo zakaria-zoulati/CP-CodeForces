@@ -28,6 +28,5 @@ func main() {
             result += interval - ones
         }
     }
-
     fmt.Println(result)
 }
