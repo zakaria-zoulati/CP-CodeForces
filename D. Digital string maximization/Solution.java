@@ -24,8 +24,7 @@ public class Solution {
             int n = s.length() ; 
             char[] chars = s.toCharArray() ;
             for( int i=1 ; i<n ; ++i ){
-                if( chars[i] == '0' ) continue ; 
-                else if( chars[i] > chars[i-1] + 1 ){
+                if( chars[i] > chars[i-1] + 1 ){
                     operate( chars , i ) ; 
                 }
             }
