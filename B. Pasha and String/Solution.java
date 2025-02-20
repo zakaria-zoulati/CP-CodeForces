@@ -13,8 +13,6 @@ public class B {
         }
         
         char[] chars = s.toCharArray() ; 
-        
-        int[] indexes = new int[n] ; 
         boolean swap = false ; 
         for( int i=0 ; i<n/2 ; ++i ){
             if( arr[i] % 2 == 1 ){
