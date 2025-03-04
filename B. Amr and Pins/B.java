@@ -7,7 +7,7 @@ public class B {
         long x = sc.nextLong() ; 
         long y = sc.nextLong() ; 
         long x1 = sc.nextLong() ; 
-        long  y1 = sc.nextLong() ; 
+        long y1 = sc.nextLong() ; 
         
         long d1 = x - x1 ; 
         long d2 = y - y1 ;
