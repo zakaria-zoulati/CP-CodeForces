@@ -8,7 +8,6 @@ public class Solution {
         for( int i=0 ; i<n ; ++i ){
             arr[i] = sc.nextLong() ; 
         }
-        Arrays.sort(arr) ; 
         long sum = 0L ; 
         long max = 0L ;
         long e = 0L ; 
