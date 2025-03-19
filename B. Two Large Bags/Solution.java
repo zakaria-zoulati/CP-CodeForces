@@ -11,7 +11,6 @@ public class Solution {
                 f[ sc.nextInt() ]++ ; 
             }
             boolean rs = true ; 
-            int actions = 0 ; 
             for( int i=1 ; i<=n ; ++i ){
                 if( f[i] % 2 == 0  ){
                     if( i+1 <=n && f[i] > 0  ){
