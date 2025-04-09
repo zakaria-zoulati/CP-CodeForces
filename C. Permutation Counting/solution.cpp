@@ -37,7 +37,7 @@ int main() {
         sort(arr.begin(), arr.end());
         if( check( arr , 1 , k ) ){
             long long l = 1;
-            long long r = LLONG_MAX; 
+            long long r = ( arr[n-1] * n ) + k + 1; 
             long long rs = 0;
             while (l < r) {
                 long long mid = l + (r - l+1) / 2;
