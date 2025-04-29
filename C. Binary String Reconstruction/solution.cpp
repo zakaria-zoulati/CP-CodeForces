@@ -11,7 +11,7 @@ ll mod = (ll) 1e9 + 7 ;
 void solve() {
     string s ; cin >> s ; 
     int n = s.size() ; 
-    int x ; cin >> x ;.
+    int x ; cin >> x ;
     string rs( n , '1' ) ; 
     for( int i=0 ; i<n ; ++i ){
        if( i-x < 0 && i+x > n ){
