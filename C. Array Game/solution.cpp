@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <cmath>
 
 #define all(x) begin(x), end(x)
 #define rall(x) rbegin(x), rend(x)
@@ -19,7 +20,6 @@ void solve() {
         sort( all(arr) ) ; 
         ll rs = arr[0] ; 
         for( int i=1 ; i<n ; ++i ){
-            rs = min( rs , arr[i] ) ; 
             rs = min( rs , arr[i] - arr[i-1] );
         }
         cout << rs << '\n' ; 
@@ -27,27 +27,42 @@ void solve() {
         sort( all(arr) ) ; 
         ll rs = arr[0] ; 
         for( int i=1 ; i<n ; ++i ){
-            rs = min( rs , arr[i] ) ; 
             rs = min( rs , arr[i] - arr[i-1] ) ; 
-        }
-        vector<pair<ll,int>> p ; 
-        for( int i=0 ; i<n ; ++i ) {
-            p.push_back( { arr[i] , 0 } ) ; 
-            while( i+1<n && arr[i+1] == arr[i] ) i++ ; 
         }
         for( int i=0 ; i<n ; ++i ){
             for( int j=i+1 ; j<n ; ++j ){
-                p.push_back( { arr[j] - arr[i] , 1 }) ; 
-            }
-        }
-        sort( all(p) ) ; 
-        for( int i=1 ; i < p.size() ; ++i ){
-            if( (p[i].second + p[i-1].second) == 1 ){
-                rs = min( rs , p[i].first - p[i-1].first  ) ; 
+                ll val = arr[j] - arr[i] ; 
+                if( arr[n-1] >= val ){
+                    int l = 0 ; 
+                    int r = n-1 ; 
+                    while( l < r ){
+                        int mid = l + ( r - l )/2 ; 
+                        if( arr[mid] >= val ){
+                            r = mid ; 
+                        }else {
+                            l = mid + 1 ;
+                        }
+                    }
+                    rs = min( rs , arr[l] - val ) ; 
+                }
+                if( arr[0] <= val ){
+                    int l = 0 ; 
+                    int r = n-1 ; 
+                    while( l < r ){
+                        int mid = l + ( r - l + 1 )/2 ; 
+                        if( arr[mid] <= val ){
+                            l = mid; 
+                        }else {
+                            r = mid - 1 ;
+                        }
+                    }
+                    rs = min( rs , val - arr[l] ) ; 
+                }
             }
         }
         cout << rs << '\n' ; 
     }
+    
 }
 
 int main() {
