@@ -44,7 +44,7 @@ void solve() {
     while(!pq.empty()){
         auto [d,u]=pq.top();
         pq.pop();
-        if(d!=dist[u]) continue;
+        if(d>dist[u]) continue;
         for(auto [v,c]:edges[u]){
             if(dist[v]>d+c){
                 dist[v]=d+c;
