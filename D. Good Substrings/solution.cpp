@@ -13,7 +13,7 @@ using ll = long long ;
 
 ll mod = LLONG_MAX ; 
 
-// Solution 1 : Using 2 hashes and the length of the susbtring to avoid hashes
+// Solution 1 : Using 2 hashes and the length of the susbtring to avoid hashes colisions
 
 void solve() {
    string s ; cin >> s ; 
