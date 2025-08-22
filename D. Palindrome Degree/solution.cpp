@@ -7,7 +7,7 @@
 using namespace std;
 using ll = long long ; 
 
-ll getRs(string s , ll mod ){
+ll getRs(string &s , ll mod ){
    int n = s.size() ; 
    vector<int> dp( n+1,0 );
    ll p = 31 ; 
