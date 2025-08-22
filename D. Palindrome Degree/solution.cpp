@@ -1,38 +1,49 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+#include <climits>
+
 using namespace std;
-#define ll long long
+using ll = long long ; 
 
-const ll MOD = 1e9 + 7, N = 5e6 + 10, BASE = 911382323; 
-ll n,HASH[N],RHASH[N],POW[N],deg[N];
-string s;
-
-ll get(ll d[],ll l,ll r){
-    return (d[r] - d[l - 1] * POW[r - l + 1] % MOD + MOD) % MOD;
-}
-
-bool isPal(ll l,ll r){
-    return get(HASH, l, r) == get(RHASH, n - r + 1, n - l + 1);
-}
-
-int main(){
-    ios_base::sync_with_stdio(0);cin.tie(0);
-    cin>>s;
-    n = s.size();
-    s = " " + s;
-    POW[0] = 1;
-    for (int i=1;i<=n;i++){
-        POW[i] = POW[i - 1] * BASE % MOD;
-        HASH[i] = (HASH[i - 1] * BASE + s[i]) % MOD;
-        RHASH[i] = (RHASH[i - 1] * BASE + s[n - i + 1]) % MOD;
-    }
-    ll ans = 0;
-    for (int i=1;i<=n;i++){
-        if(isPal(1, i)){
-            deg[i] = deg[i/2] + 1;
-        } else {
-            deg[i] = 0; 
+ll getRs(string s , ll mod ){
+   int n = s.size() ; 
+   vector<int> dp( n+1,0 );
+   ll p = 31 ; 
+   ll curr = 1 ; 
+   ll hash1 = 0 ; 
+   ll hash2 = 0 ; 
+   ll rs = 0 ; 
+   for( int i=1 ; i<=n ; ++i ){
+        hash1 = ( hash1*p + s[i-1] ) % mod ; 
+        hash2 = ( hash2 + s[i-1]*curr ) % mod ; 
+        if( hash1 == hash2 ){
+            dp[i] = dp[i/2] + 1 ; 
         }
-        ans += deg[i];
+        rs += dp[i] ; 
+        curr = ( curr*31 ) % mod ; 
+   }
+   return rs ; 
+}
+
+void solve() {
+   string s ; cin >> s ; 
+   ll rs = LLONG_MAX ; 
+   rs = min( rs , getRs(s,7901) ) ; 
+   rs = min( rs , getRs(s, 19 ) ) ; 
+   rs = min( rs , getRs(s, 1e9+7 ) );
+   cout << rs << '\n' ;  
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int t = 1; 
+    while (t--) {
+        solve();
     }
-    cout<<ans<<"\n";
+    
+    return 0;
 }
