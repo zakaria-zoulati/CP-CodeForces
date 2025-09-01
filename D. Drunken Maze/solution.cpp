@@ -11,14 +11,6 @@
 using namespace std;
 using ll = long long ; 
 
-int gcd(int a, int b) {
-    while (b) {
-        int t = a % b;
-        a = b;
-        b = t;
-    }
-    return a;
-}
 
 void solve() {
     int n , m ; 
@@ -81,7 +73,6 @@ int main() {
     cin.tie(nullptr);
 
     int t = 1 ; 
-    // cin >> t ; 
     while( t-- ) {
         solve() ; 
     }
