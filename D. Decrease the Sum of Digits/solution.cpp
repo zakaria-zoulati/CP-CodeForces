@@ -9,7 +9,7 @@ using ld = long double ;
 
 int mod = 1'000'000'007 ; 
 
-int sum( int n ){
+int sum( ll n ){
     int ans = 0 ; 
     while( n > 0 ){
         ans += n % 10 ; 
