@@ -2,72 +2,56 @@
 
 using namespace std;
 
-#define all(x) begin(x) , end(x) 
+#define all(x) begin(x) , end(x)
 
 using ll = long long ;  
-using vi = vector<int> ; 
-using vvi = vector<vi> ; 
+using ld = long double ;
 
-using vb = vector<bool> ; 
-using vvb = vector<vb> ; 
+int mod = 998244353 ;
 
-using pi = pair<int,int> ; 
-
-const int mod = 998244353; 
-
-ll cost( int n , int k  , int tar ){
-
-    if( tar == 1 ) return 0 ; 
-
+bool check(int l , int r , int n , int m , int tar){
+    if( tar == 1 ) return true ; 
     tar-- ; 
-
-    int a = k-1; 
-    int b = n-k ; 
+    int curr = tar - 1 ; 
+    if( curr > m ) return false ; 
     
-    ll ans = LLONG_MAX ; 
-
-    if( tar <= k - 1 || tar <= n -k  ){
-        ans = tar - 1 + tar ; 
+    int add = INT_MAX ; 
+    
+    for( int i=0 ; i<=l ; ++i ){
+        if( i > tar ) break ; 
+        if( tar - i > r ) continue ; 
+        add = min( add , max( i , tar - i ) ) ; 
     }
-
-
-    for( int i=1 ; i<=a ; ++i ){
-        if( tar - i <= b ){
-            ll x = min( i , tar - i  ) ; 
-            ll y = max( i , tar - i ) ; 
-            ans = min( ans , y - 1 + y + x ) ; 
-        }
-    }
-
-    return ans ;
+    // 
+    curr += add ; 
+    return curr <= m ; 
 }
 
-void solve( ){
-   int n ; cin >> n ; 
-   ll m ; cin >> m ; 
-   int k ; cin >> k ; 
-
-
-   int l=1 ; 
-   int r=n ; 
-
-   while( l < r ){
-    int mid = l + ( r - l + 1 )/2 ; 
-    if( cost( n , k , mid ) <= m ){
-        l = mid ; 
-    }else {
-        r = mid -1 ; 
-    }
-   }
-
-   cout << l << '\n' ; 
-
+void solve(){
+  int n ; cin >> n ; 
+  int m ; cin >> m ; 
+  int k ; cin >> k ; 
+  
+  int l = 1; 
+  int r = n ; 
+  
+  
+  while( l < r ){
+      int mid = l + ( r - l + 1  )/2 ; 
+      if( check( k-1 , n-k , n , m ,  mid ) ){
+          l = mid ; 
+      }else {
+          r = mid - 1 ; 
+      }
+  }
+  
+  cout << l << '\n' ; 
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
+    
     int t = 1 ; 
     cin >> t ; 
     while( t-- ){
