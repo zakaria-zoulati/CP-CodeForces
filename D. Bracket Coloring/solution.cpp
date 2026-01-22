@@ -4,7 +4,6 @@ using namespace std;
 
 using ll = long long ; 
 
-
 void solve(){
   int n ; cin >> n ; 
   string s; cin >> s ; 
